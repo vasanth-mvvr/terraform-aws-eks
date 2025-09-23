@@ -1,0 +1,7 @@
+aws eks update-kubeconfig --region us-east-1 --name expense-dev
+
+ls -la 
+there will be a .kube/ file
+there will be a cat config 
+
+What is this .kube means the file which holds the cluster information both authenticate and authorization
