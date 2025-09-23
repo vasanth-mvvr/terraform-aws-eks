@@ -1,0 +1,33 @@
+# Local .terraform directories
+**/.terraform/*
+**/.terraform.*
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Crash logs
+crash.log
+*.crash
+
+# Ignore overrides (used for local experiments)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform lock file (optional: keep if you want provider versions pinned)
+.terraform.lock.hcl
+
+# Provider binaries
+terraform-provider-*
+
+# Plan output files
+*.plan
+
+# Log files
+*.log
