@@ -5,3 +5,26 @@ there will be a .kube/ file
 there will be a cat config 
 
 What is this .kube means the file which holds the cluster information both authenticate and authorization
+
+check weather the nodes are running or not
+
+to upgrade we should taint the latest nodes so that no new pod will be created
+
+kubectl taint nodes <ip address> project=expense:NoSchedule
+
+Now upgrade control pane manually
+
+shift workloads from 1.29 node group to 1.30 node group 
+
+kubectl cordon <node name> # old node cordon
+
+# untaint
+kubectl taint nodes <ip address> project=expense:NoSchedule-  
+
+# drain
+kubectl drain --ignore-daemonsets <node>  # old node drain delete
+
+
+Check the pods are there in administration system
+
+kubectl get pods -n kube-system -o wide
