@@ -9,7 +9,7 @@ module "eks" {
   cluster_name = "${var.project}-${var.environment}"
   cluster_version = "1.29"
 # it should be false in prod
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access = false
 
   vpc_id = local.vpc_id
   subnet_ids = split(",",local.private_subnet_id)
