@@ -1,5 +1,5 @@
 resource "aws_lb" "ingress_alb" {
-  name = "${var.project}-${var.environment}-ingress_alb"
+  name = "${var.project}-${var.common_tags.environment}-ingress-alb"
   internal = false # public ALB
   security_groups = [ data.aws_ssm_parameter.ingress_sg_id.value ]
   subnets = split(",",data.aws_ssm_parameter.public_subnet_ids.value)
@@ -10,7 +10,7 @@ resource "aws_lb" "ingress_alb" {
     tags = merge(
         var.common_tags,
         {
-            Name = "${var.project}-${var.environment}-ingress_alb"
+            Name = "${var.project}-${var.common_tags.environment}-ingress-alb"
         }
     )
 }
@@ -35,6 +35,8 @@ resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.ingress_alb.arn
   port = "443"
   protocol = "HTTPS"
+  certificate_arn = data.aws_ssm_parameter.acm_certificate_arn.value
+  ssl_policy = "ELBSecurityPolicy-2016-08"
 
   default_action {
     type = "fixed-response"
@@ -91,7 +93,7 @@ module "records" {
         type = "A"
         allow_overwrite = true
         alias = {
-            name = aws_lb.ingress_alb.name
+            name = aws_lb.ingress_alb.dns_name
             zone_id = aws_lb.ingress_alb.zone_id
         }
 
