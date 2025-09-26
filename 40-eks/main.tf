@@ -42,9 +42,9 @@ module "eks" {
         desired_size = 2
         capacity_type = "SPOT"
         iam_role_additional_policies = {
-            AmazonEBSCSIDrivePolicy = "arn:aws:iam:aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-            AmazonElasticFileSystemFullAccess =  "arn:aws:iam:aws:policy/AmazonElasticFileSystemFullAccess"
-            ElasticLoadBalancingFullAccess = "arn:aws:iam:aws:policy/ElasticLoadBalancingFullAccess"
+            AmazonEBSCSIDrivePolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+            AmazonElasticFileSystemFullAccess =  "arn:aws::iam:aws:policy/AmazonElasticFileSystemFullAccess"
+            ElasticLoadBalancingFullAccess = "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
         }
         # EKS takes aws linux 2 as it's os to the nodes
         key_name = aws_key_pair.eks.key_name
