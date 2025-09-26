@@ -23,5 +23,5 @@ variable "common_tags" {
 # }
 
 variable "zone_id" {
-  default = ""
+  default = "Z0879685WB7OSJ4GGIDR"
 }
