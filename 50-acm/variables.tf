@@ -23,5 +23,5 @@ variable "common_tags" {
 # }
 
 variable "zone_id" {
-  
+  default = ""
 }
