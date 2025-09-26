@@ -115,14 +115,6 @@ resource "aws_security_group_rule" "db_node" {
   source_security_group_id = module.node.sg_id
   security_group_id = module.db.sg_id
 }
-resource "aws_security_group_rule" "ingress_public_https" {
-    type = "ingress"
-  from_port = 443
-  to_port = 443
-  protocol = "TCP"
-  cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = module.ingress.sg_id
-}
 
 resource "aws_security_group_rule" "ingress_public_http" {
     type = "ingress"
