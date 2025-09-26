@@ -51,7 +51,7 @@ resource "aws_lb_listener" "https" {
 
 resource "aws_lb_target_group" "frontend" {
   name = "${var.project}-${var.environment}-frontend"
-  port = "80"
+  port = 8080
   protocol = "HTTP"
   target_type = "ip"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
@@ -66,7 +66,7 @@ resource "aws_lb_target_group" "frontend" {
 }
 
 resource "aws_lb_listener_rule" "frontend" {
-  listener_arn = aws_lb_listener.http.arn
+  listener_arn = aws_lb_listener.https.arn
   priority = 100  # less number will be first validated
 
   action {
